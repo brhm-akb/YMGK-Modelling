@@ -1,22 +1,31 @@
-KAPLAN-YORKE HARİTASI
+Complex squaring map
 
-Kaplan-Yorke haritası, karmaşık sistemlerin kaotik davranışlarını görselleştirmek için kullanılan bir grafiksel araçtır. İlk olarak Edward Lorenz tarafından geliştirilen bir yöntem olan Kaplan-Yorke haritası, kaos teorisi ve dinamik sistemler teorisinde önemli bir yere sahiptir. Bu harita, bir sistemdeki kaotik davranışın ne zaman ortaya çıktığını ve bu davranışın şiddetini belirlemeye yardımcı olur.
+Matematikte , ikinci dereceden bir polinom eşlemesi olan karmaşık kare alma haritası , dinamik sistemlerdeki kaosun basit ve erişilebilir bir gösterimidir . Aşağıdaki adımları gerçekleştirerek oluşturulabilir:
 
-Kaplan-Yorke haritası oluşturmak için, sistemdeki davranışı analiz etmek için bir parametre seçilir. Bu parametre, sistemin kaotik olup olmadığını ve kaosun ne zaman ortaya çıktığını belirlemek için önemlidir. Bu parametre genellikle sistemdeki belirli bir özelliği kontrol eden bir parametre olabilir. 
 
-![image](https://github.com/brhm-akb/YMGK-Modelling/assets/65442206/5670d9af-1afa-4519-8d02-b1ffd0b8a993)
+1)Birim çember üzerinde bağımsız değişkeni ( açı) π'nin rasyonel katı olmayan herhangi bir karmaşık sayıyı seçin 
 
-burada mod, gerçek argümanlara sahip modulo operatörüdür . Harita yalnızca bir sabit α'ya bağlıdır.
+2)Bu sayının tekrar tekrar karesini alın.
 
-HESAPLAMA YÖNTEMİ
 
-Yuvarlama hatası nedeniyle, modulo operatörünün ardışık uygulamaları, bilgisayarda kayan nokta işlemi olarak uygulandığında yaklaşık on veya yirmi yinelemeden sonra sıfır verecektir. Aşağıdaki eşdeğer algoritmayı uygulamak daha iyidir:
+Bu tekrarlama (yineleme), bağımsız değişkenleriyle tek başına tanımlanabilecek bir karmaşık sayılar dizisi üretir. Yukarıda (1)'i karşılayan herhangi bir başlangıç ​​açısı seçimi, adımların basitliğine ters düşen son derece karmaşık bir açı dizisi üretecektir. Dizinin kaotik olacağı , yani ayrıntılı başlangıç ​​açısı seçimine duyarlı olduğu gösterilebilir.
 
-![image](https://github.com/brhm-akb/YMGK-Modelling/assets/65442206/eb600568-a698-4261-8d96-36d498373264)
+Yinelemenin kaotik olmasının gayri resmi nedeni, açının her yinelemede iki katına çıkması ve açı büyüdükçe iki katına çıkmanın çok hızlı büyümesidir, ancak 2π'nin ( radyan ) katları kadar farklılık gösteren açılar aynıdır. Dolayısıyla açı 2π'yi aştığında 2π'ye bölünerek kalana sarılmalıdır . Bu nedenle açı ikili dönüşüme (2 x mod 1 haritası olarak da bilinir ) göre dönüştürülür . Başlangıç ​​değeri z0 π'nin rasyonel katı olmayacak şekilde seçildiğinden, z n'nin ileri yörüngesi kendini tekrarlayamaz ve periyodik hale gelemez.
 
-Kısa sayıda yinelemeden sonra modulo operatörünün veriminin sıfır olmasını önlemenin başka bir yolu da şudur:
+Daha resmi olarak yineleme şu şekilde yazılabilir:
 
-![image](https://github.com/brhm-akb/YMGK-Modelling/assets/65442206/9a914f24-18bc-4cd4-8c2b-e332bf1c0ae4)
+![image](https://github.com/brhm-akb/YMGK-Modelling/assets/65442206/a97166ea-3fe8-43c6-a1f9-238b1ec87c85)
 
-bu, daha birçok yinelemeden sonra da olsa sonuçta sıfıra dönecektir.
+zn ukarıdaki adımların yinelenmesiyle elde edilen karmaşık sayılar dizisidir ve z0 ilk başlangıç ​​numarasını temsil eder. Bu yinelemeyi aynen çözebiliriz:
 
+![image](https://github.com/brhm-akb/YMGK-Modelling/assets/65442206/57d954b2-5f80-4e5e-b781-87cdf81af75d)
+
+θ açısıyla başlayarak başlangıç ​​terimini şu şekilde yazabiliriz:
+
+z0=exp(iθ)
+
+böylece
+
+zn=exp(i2^nθ)
+
+Bu, açının art arda iki katına çıkmasını netleştirir. (zn=cos(2^nθ) + isin(2^nθ) Euler formülüne göre)
